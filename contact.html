@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Mechanical Engineering Micro Systems</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fcfcfc;
+        }
+        header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #00467f;
+            padding-bottom: 10px;
+        }
+        header h1 {
+            color: #00467f;
+            margin-bottom: 5px;
+        }
+        nav {
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+        nav a {
+            color: #00467f;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        nav a.active {
+            border-bottom: 2px solid #00467f;
+            padding-bottom: 2px;
+        }
+
+        /* Contact info block */
+        .contact-info {
+            background: #fff;
+            border: 1.5px solid #ddd;
+            border-radius: 4px;
+            padding: 25px 30px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+            margin-bottom: 35px;
+        }
+        .contact-info h2 {
+            color: #00467f;
+            font-size: 1.1em;
+            margin: 0 0 12px 0;
+        }
+        .contact-info p {
+            margin: 3px 0;
+            font-size: 0.97em;
+        }
+        .contact-info a {
+            color: #00467f;
+        }
+
+        /* Contact form */
+        .contact-form {
+            background: #fff;
+            border: 1.5px solid #ddd;
+            border-radius: 4px;
+            padding: 25px 30px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+        }
+        .contact-form h2 {
+            color: #00467f;
+            font-size: 1.1em;
+            margin: 0 0 20px 0;
+        }
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .form-group label {
+            font-size: 0.88em;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 4px;
+        }
+        .form-group input,
+        .form-group textarea {
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 0.92em;
+            font-family: inherit;
+            color: #333;
+            background: #fafafa;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00467f;
+            background: #fff;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .required-note {
+            font-size: 0.8em;
+            color: #888;
+            margin-bottom: 16px;
+        }
+        .submit-btn {
+            background: #00467f;
+            color: #fff;
+            border: none;
+            padding: 10px 28px;
+            border-radius: 3px;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .submit-btn:hover {
+            background: #003565;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:5px;">
+            <a href="https://www.technion.ac.il/en/" target="_blank" rel="noopener"><img src="Images/Eng_Hor_Blue.png" alt="Technion Logo" style="height:70px; width:auto;"></a>
+            <h1 style="margin:0; color:#00467f; text-align:center; flex:1; padding:0 20px; white-space:nowrap;">Mechanical Engineering Micro Systems</h1>
+            <img src="Images/MEMS_logo.png" alt="MEMS Lab Logo" style="height:60px; width:auto;">
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="research.html">Research</a>
+            <a href="people.html">People</a>
+            <a href="contact.html" class="active">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Contact details -->
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            <p><strong>David Elata</strong></p>
+            <p>Head, MicroSystems Laboratory</p>
+            <p>Department of Mechanical Engineering</p>
+            <p>Technion – Israel Institute of Technology</p>
+            <p style="margin-top:10px;">
+                Tel: <a href="tel:+97248293184">+972-4-829-3184</a>
+            </p>
+            <p>
+                Email: <a href="mailto:elata@technion.ac.il">elata@technion.ac.il</a>
+            </p>
+        </div>
+
+        <!-- Contact form -->
+        <div class="contact-form">
+            <h2>Send a Message</h2>
+            <p class="required-note">Fields marked with * are required.</p>
+            <form action="mailto:elata@technion.ac.il" method="POST" enctype="text/plain">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" id="full-name" name="Full Name" placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="Email" required placeholder="your@email.com">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tel">Tel.</label>
+                        <input type="tel" id="tel" name="Tel" placeholder="+1 234 567 8900">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="Address" placeholder="Your address">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="Subject" required placeholder="Message subject">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="comment">Comment *</label>
+                        <textarea id="comment" name="Comment" required placeholder="Your message…"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+
+    </main>
+
+</body>
+</html>

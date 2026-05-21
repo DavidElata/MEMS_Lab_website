@@ -1,0 +1,1 @@
+This website was prepared by me while having excruciating audio and text communications with Visual studio codes.

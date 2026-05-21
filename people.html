@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People — Mechanical Engineering Micro Systems</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fcfcfc;
+        }
+        header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #00467f;
+            padding-bottom: 10px;
+        }
+        header h1 {
+            color: #00467f;
+            margin-bottom: 5px;
+        }
+        nav {
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+        nav a {
+            color: #00467f;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        nav a.active {
+            border-bottom: 2px solid #00467f;
+            padding-bottom: 2px;
+        }
+
+        /* Section headings */
+        section {
+            margin-bottom: 50px;
+        }
+        section h2 {
+            color: #00467f;
+            font-size: 1.25em;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 6px;
+            margin-bottom: 20px;
+        }
+
+        /* ── Head of Group ── */
+        .pi-card {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+            background: #fff;
+            border: 1.5px solid #ddd;
+            border-radius: 4px;
+            padding: 25px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+        }
+        .pi-photo img {
+            width: 130px;
+            border-radius: 3px;
+            display: block;
+        }
+        .pi-info h3 {
+            color: #00467f;
+            margin: 0 0 6px 0;
+            font-size: 1.15em;
+        }
+        .pi-contact {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 12px;
+        }
+        .pi-contact a {
+            color: #00467f;
+        }
+        .pi-bio {
+            font-size: 0.95em;
+            margin: 0;
+        }
+
+        /* ── Current Students ── */
+        .students-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .student-card {
+            flex: 0 0 calc(50% - 8px);
+            background: #fff;
+            border: 1.5px solid #ddd;
+            border-radius: 4px;
+            padding: 15px 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+            box-sizing: border-box;
+        }
+        .student-card .degree-label {
+            font-size: 0.78em;
+            font-weight: bold;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 3px;
+        }
+        .student-card h3 {
+            color: #00467f;
+            margin: 0 0 6px 0;
+            font-size: 1.05em;
+        }
+        .student-card .contact {
+            font-size: 0.88em;
+            color: #555;
+        }
+        .student-card .contact a {
+            color: #00467f;
+        }
+
+        /* ── Alumni table ── */
+        .table-controls {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+        .table-controls label {
+            margin-right: 5px;
+            color: #555;
+        }
+        .table-controls input[type="search"] {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 0.9em;
+            width: 220px;
+        }
+        table.alumni-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88em;
+        }
+        table.alumni-table th,
+        table.alumni-table td {
+            text-align: left;
+            padding: 8px 10px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+        table.alumni-table td:nth-child(3),
+        table.alumni-table th:nth-child(3) {
+            white-space: nowrap;
+        }
+        table.alumni-table td:nth-child(1),
+        table.alumni-table th:nth-child(1) {
+            min-width: 175px;
+        }
+        table.alumni-table td:nth-child(2),
+        table.alumni-table th:nth-child(2) {
+            max-width: 160px;
+        }
+        table.alumni-table tr.has-continuation td {
+            border-bottom: none;
+            padding-bottom: 2px;
+        }
+        table.alumni-table tr.continuation td {
+            border-top: none;
+            padding-top: 0;
+        }
+        table.alumni-table th {
+            background: #f0f4f8;
+            color: #00467f;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+        table.alumni-table th:hover {
+            background: #e0e8f0;
+        }
+        table.alumni-table th .sort-icon {
+            margin-left: 4px;
+            font-size: 0.75em;
+            color: #aaa;
+        }
+        table.alumni-table tbody tr:hover td {
+            background: #f8fafc;
+        }
+        table.alumni-table td a {
+            color: #00467f;
+        }
+        .table-info {
+            font-size: 0.82em;
+            color: #777;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:5px;">
+            <a href="https://www.technion.ac.il/en/" target="_blank" rel="noopener"><img src="Images/Eng_Hor_Blue.png" alt="Technion Logo" style="height:70px; width:auto;"></a>
+            <h1 style="margin:0; color:#00467f; text-align:center; flex:1; padding:0 20px; white-space:nowrap;">Mechanical Engineering Micro Systems</h1>
+            <img src="Images/MEMS_logo.png" alt="MEMS Lab Logo" style="height:60px; width:auto;">
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="research.html">Research</a>
+            <a href="people.html" class="active">People</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ══ Head of Group ══ -->
+        <section>
+            <h2>Head of Group</h2>
+            <div class="pi-card">
+                <div class="pi-photo">
+                    <img src="https://mems.technion.ac.il/files/2025/06/Elata_Apr_2018-232x300.jpg"
+                         alt="Prof. David Elata">
+                </div>
+                <div class="pi-info">
+                    <h3>Prof. David Elata</h3>
+                    <div class="pi-contact">
+                        Phone: +972-4-829-3184<br>
+                        Office: Dan Kahn, 221<br>
+                        <a href="mailto:elata@technion.ac.il">elata@technion.ac.il</a>
+                    </div>
+                    <p class="pi-bio">
+                        <strong>David Elata</strong> has a D.Sc. in Mechanical Engineering from the Technion –
+                        Israel Institute of Technology, 1993, and since 1996 he holds an academic position at the
+                        Technion. His research interests include modeling and design of MEMS actuators, and
+                        development of novel concepts for MEMS devices. He has been serving the MEMS community
+                        as an Editor of the <em>IEEE-JMEMS</em>, 2008–24, as a Senior Editor of
+                        <em>IEEE-Sensors Letters</em>, 2017–24, and he has been serving as a member of the TPCs
+                        of leading conferences in the field.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ Current Students ══ -->
+        <section>
+            <h2>Current Students</h2>
+            <div class="students-grid">
+                <div class="student-card">
+                    <div class="degree-label">Ph.D. Student</div>
+                    <h3>David Rosenstock</h3>
+                    <div class="contact">
+                        <a href="mailto:rosenstock@campus.technion.ac.il">rosenstock@campus.technion.ac.il</a><br>
+                        Office: Lady Davis, 460
+                    </div>
+                </div>
+                <div class="student-card">
+                    <div class="degree-label">Ph.D. Student</div>
+                    <h3>Eli Benvenisty</h3>
+                    <div class="contact">
+                        <a href="mailto:elibelib22@campus.technion.ac.il">elibelib22@campus.technion.ac.il</a><br>
+                        Office: Lady Davis, 460
+                    </div>
+                </div>
+                <div class="student-card">
+                    <div class="degree-label">M.Sc. Student</div>
+                    <h3>Ido Kosover</h3>
+                    <div class="contact">
+                        <a href="mailto:ido.kosover@campus.technion.ac.il">ido.kosover@campus.technion.ac.il</a><br>
+                        Office: Lady Davis, 460
+                    </div>
+                </div>
+                <div class="student-card">
+                    <div class="degree-label">M.Sc. Student</div>
+                    <h3>Yehonatan Landwer</h3>
+                    <div class="contact">
+                        <a href="mailto:yehonathanl@campus.technion.ac.il">yehonathanl@campus.technion.ac.il</a><br>
+                        Office: Lady Davis, 460
+                    </div>
+                </div>
+                <div class="student-card">
+                    <div class="degree-label">M.Sc. Student</div>
+                    <h3>Ori Partok</h3>
+                    <div class="contact">
+                        <a href="mailto:ori.partok@campus.technion.ac.il">ori.partok@campus.technion.ac.il</a><br>
+                        Office: Lady Davis, 460
+                    </div>
+                </div>
+                <div class="student-card">
+                    <div class="degree-label">Undergraduate Student</div>
+                    <h3>Itay Nachum</h3>
+                    <div class="contact">
+                        <a href="mailto:itay.nachum@campus.technion.ac.il">itay.nachum@campus.technion.ac.il</a><br>
+                        Office: Lady Davis, 460
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ══ Alumni ══ -->
+        <section>
+            <h2>Alumni</h2>
+            <div class="table-controls">
+                <label for="alumni-search">Search:</label>
+                <input type="search" id="alumni-search" placeholder="Filter alumni…">
+            </div>
+            <table class="alumni-table" id="alumni-table">
+                <thead>
+                    <tr>
+                        <th data-col="0">Name <span class="sort-icon">▲▼</span></th>
+                        <th data-col="1">Currently <span class="sort-icon">▲▼</span></th>
+                        <th data-col="2">When <span class="sort-icon">▲▼</span></th>
+                        <th data-col="3">Research Topic <span class="sort-icon">▲▼</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Ph.D. Alumni -->
+                    <tr><td><a href="http://www.mre-rope.com/" target="_blank" rel="noopener">Dr. Ronen Ashkenazi</a></td><td>Founder, M.R.E., Israel.</td><td>Ph.D., 2001–2004</td><td>Fatigue of steel wire ropes</td></tr>
+                    <tr><td>Dr. Samy Abu-Salih</td><td>Braude College of Engineering, Karmiel, Israel.</td><td>Ph.D., 2002–2006</td><td>Modeling and analysis of electromechanical buckling with application to novel MEMS devices</td></tr>
+                    <tr class="has-continuation"><td>Dr. Rashed Mahameed</td><td>Currently with Apple, Israel.</td><td>Ph.D., 2003–2006</td><td>Thermal effects in micro-systems, and application in novel micro-devices</td></tr>
+                    <tr class="continuation"><td></td><td></td><td>M.Sc., 2001–2003</td><td>A novel thermoelastic actuation scheme for micro resonators</td></tr>
+                    <tr class="has-continuation"><td>Dr. Saar Golan</td><td>Adjunct member, Technion &amp; Ariel University, Israel.</td><td>Ph.D., 2003–2007</td><td>Differentiation of multi species biofluids by dielectrophoretic field flow fractionation</td></tr>
+                    <tr class="continuation"><td></td><td></td><td>M.Sc., 2000–2002</td><td>The relationship between the anatomy of the Canaliculi, the pressure at its ends and the blood flow through it</td></tr>
+                    <tr class="has-continuation"><td>Dr. Vitaly Leus</td><td></td><td>Ph.D., 2005–2009</td><td>New efficient methods for modeling, design and actuation of electrostatic micro mechanical devices</td></tr>
+                    <tr class="continuation"><td></td><td></td><td>M.Sc., 2003–2005</td><td>Modeling the static and dynamic responses of electrostatic MEMS switches</td></tr>
+                    <tr class="has-continuation"><td>Dr. Arnon Hirshberg</td><td></td><td>Ph.D., 2005–2013</td><td>Mechanical coupling in deformable structures in micro-systems</td></tr>
+                    <tr class="continuation"><td></td><td></td><td>M.Sc., 2002–2004</td><td>Novel test devices for measuring mechanical properties of MEMS structures</td></tr>
+                    <tr class="has-continuation"><td>Dr. Shai Shmulevich</td><td></td><td>Ph.D., 2012–2016</td><td>Enhancing the functionality of MEMS actuators by tailoring nonlinear effects</td></tr>
+                    <tr class="continuation"><td></td><td></td><td>M.Sc., 2010–2012</td><td>Measures of the response of electromechanical resonators</td></tr>
+                    <tr class="has-continuation"><td>Dr. Inbar (Hotzen) Greenberg</td><td></td><td>Ph.D., 2013–2017</td><td>Smart micro structures: directional features for enhancing the performance of micro-transducers</td></tr>
+                    <tr class="continuation"><td></td><td></td><td>M.Sc., 2011–2013</td><td>MEMS resonators</td></tr>
+                    <tr class="has-continuation"><td>Dr. Danny A. Kassie</td><td></td><td>Ph.D., 2016–2022</td><td>Investigation of the response of resonators and parametric resonators</td></tr>
+                    <tr class="continuation"><td></td><td></td><td>M.Sc., 2015–2016</td><td>Thermally compensated folded-beam suspension</td></tr>
+                    <!-- M.Sc. Alumni -->
+                    <tr><td>Dani Strasser</td><td></td><td>M.Sc., 1999–2003</td><td>Binding layers for delaying damage in electronic boards</td></tr>
+                    <tr><td>Eyal Elka</td><td></td><td>M.Sc., 2003–2004</td><td>The electromechanical response of multi-layered piezoelectric structures</td></tr>
+                    <tr><td>Matan Naftali</td><td>CEO and Founder, Maradin Ltd.</td><td>M.Sc., 2002–2004</td><td>Towards a linear response of vertical comb-drive actuators</td></tr>
+                    <tr><td>Ofir Barzely</td><td></td><td>M.Sc., 2003–2005</td><td>Double sided comb drive with latching stators to minimize actuation voltages</td></tr>
+                    <tr><td>Shay Yulzary</td><td></td><td>M.Sc., 2005–2008</td><td>Electromechanical instabilities in MEMS</td></tr>
+                    <tr><td>Michael Lerman</td><td></td><td>M.Sc., 2008–2010</td><td>The quality of quality-factor in micro resonators</td></tr>
+                    <tr><td>Alon Benhaim</td><td></td><td>M.Sc., 2009–2011</td><td>Self-alignment using electromagnetic induction for mass</td></tr>
+                    <tr><td>Ben Rivlin</td><td></td><td>M.Sc., 2011–2012</td><td>Non-linear springs for achieving prescribed electromechanical transduction</td></tr>
+                    <tr><td>Osher Shapira</td><td></td><td>M.Sc., 2011–2013</td><td>Implementation of electromagnetic induction in finite rectangular loops for self-alignment and levitation</td></tr>
+                    <tr><td>Tal Rubin</td><td></td><td>M.Sc., 2011–2013</td><td>A simple constitutive model for dielectric charging based on Frenkel-Poole mechanism and a derivation of Maxwell stresses</td></tr>
+                    <tr><td>Ido Zaltzman</td><td></td><td>M.Sc., 2012–2015</td><td>Electromechanical Franklin oscillators</td></tr>
+                    <tr><td>Daniel Ekeltchik</td><td></td><td>M.Sc., 2014–2015</td><td>MEMS devices for measuring strength of microbeams</td></tr>
+                    <tr><td>Aharon Joffe</td><td></td><td>M.Sc., 2014–2016</td><td>Parametric amplification in electrostatic resonators</td></tr>
+                    <tr><td>Nadav Maccabi</td><td></td><td>M.Sc., 2016–2017</td><td>Enhancing the functionality of unimorph piezoelectric actuators</td></tr>
+                    <tr><td>Ohad Berman</td><td>GE Medical</td><td>M.Sc., 2008–2017</td><td>Process Development for a Dielectric Resonator</td></tr>
+                    <tr><td>Eli Benvenisty</td><td></td><td>M.Sc., 2018–2019</td><td>Vibration mode order in mechanical disk resonators</td></tr>
+                    <tr><td>Sahar Lustig</td><td></td><td>M.Sc., 2019–2020</td><td>Piezoelectric Actuators and Vibrating Energy Harvesters</td></tr>
+                    <tr><td>Shir Benita</td><td></td><td>M.Sc., 2020–2021</td><td>Single-crystalline piezoelectric linear actuators</td></tr>
+                    <tr><td>Sivan Levi</td><td></td><td>M.Sc., 2020–2021</td><td>Wineglass mode resonators with optimized geometry for mode matching and mode ordering</td></tr>
+                    <tr><td>Eyal Ben-Yosef</td><td></td><td>M.Sc., 2019–2022</td><td>Piezoelectric actuators</td></tr>
+                    <tr><td>David Rosenstock</td><td></td><td>M.Sc., 2020–2022</td><td>The nonlinear dynamics of vibrating rings</td></tr>
+                    <tr><td>Lior Musnikov</td><td></td><td>M.Sc., 2019–2022</td><td>The nonlinear dynamics of vibrating beams</td></tr>
+                    <tr><td>Assaf Menashe</td><td></td><td>M.Sc., 2020–2022</td><td>Coriolis vibratory gyroscopes operated by auto-resonance driving</td></tr>
+                    <tr><td>Itamar Shoham</td><td></td><td>M.Sc., 2020–2022</td><td>Surface waves in single-crystalline piezoelectric actuators</td></tr>
+                    <tr><td>Julian Levinton</td><td></td><td>M.Sc., 2021–2022</td><td>Single crystalline piezoelectric actuators</td></tr>
+                    <tr><td>Elia Salman</td><td></td><td>M.Sc., 2023–2024</td><td>Vibration of cantilever beams, with application to piezoelectric vibrating energy harvester (PVEH) devices</td></tr>
+                    <tr><td>Malachi Michelin</td><td></td><td>M.Sc., 2023–2024</td><td>Auto resonance driving of frequency modulated Coriolis vibratory gyroscopes</td></tr>
+                    <tr><td>Gil Cahana</td><td></td><td>M.Sc., 2019–2025</td><td>A continuously tunable multistable electrostatic transducer</td></tr>
+                    <tr><td>Lior Zaidenberg</td><td></td><td>M.Sc., 2024–2026</td><td>Nonlinear resonators: emphasis on parametric and perfect resonance</td></tr>
+                    <tr><td>Alon Zalts</td><td></td><td>M.Sc., 2024–2026</td><td>Mechanical and electrotechnical springs</td></tr>
+                </tbody>
+            </table>
+            <div class="table-info" id="table-info"></div>
+        </section>
+
+    </main>
+
+    <script>
+        const searchInput = document.getElementById('alumni-search');
+        const tableBody   = document.querySelector('#alumni-table tbody');
+        const tableInfo   = document.getElementById('table-info');
+        const allRows     = Array.from(tableBody.querySelectorAll('tr'));
+
+        function updateInfo(visible) {
+            tableInfo.textContent = 'Showing ' + visible + ' of ' + allRows.length + ' entries';
+        }
+
+        // Live search filter
+        searchInput.addEventListener('input', function () {
+            const q = this.value.toLowerCase();
+            let visible = 0;
+            allRows.forEach(function (row) {
+                const match = row.textContent.toLowerCase().includes(q);
+                row.style.display = match ? '' : 'none';
+                if (match) visible++;
+            });
+            updateInfo(visible);
+        });
+
+        // Sortable columns
+        let sortCol = -1, sortAsc = true;
+        document.querySelectorAll('#alumni-table th').forEach(function (th) {
+            th.addEventListener('click', function () {
+                const col = parseInt(this.dataset.col);
+                if (sortCol === col) {
+                    sortAsc = !sortAsc;
+                } else {
+                    sortCol = col;
+                    sortAsc = true;
+                }
+                document.querySelectorAll('#alumni-table th .sort-icon').forEach(function (s) {
+                    s.textContent = '▲▼';
+                });
+                this.querySelector('.sort-icon').textContent = sortAsc ? '▲' : '▼';
+
+                const rows = Array.from(tableBody.querySelectorAll('tr'));
+                rows.sort(function (a, b) {
+                    const at = (a.cells[col] ? a.cells[col].textContent : '').trim().toLowerCase();
+                    const bt = (b.cells[col] ? b.cells[col].textContent : '').trim().toLowerCase();
+                    return sortAsc ? at.localeCompare(bt) : bt.localeCompare(at);
+                });
+                rows.forEach(function (r) { tableBody.appendChild(r); });
+                updateInfo(allRows.filter(function (r) { return r.style.display !== 'none'; }).length);
+            });
+        });
+
+        // Initial count
+        updateInfo(allRows.length);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanical Engineering Micro Systems - Technion</title>
+    <style>
+        body { 
+            font-family: Arial, Helvetica, sans-serif; 
+            line-height: 1.6; 
+            color: #333;
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: #fcfcfc;
+        }
+        header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #00467f;
+            padding-bottom: 10px;
+        }
+        h1 {
+            color: #00467f;
+            margin-bottom: 5px;
+        }
+        .intro-text {
+            font-size: 1.1em;
+            color: #444;
+        }
+        nav {
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+        nav a {
+            color: #00467f;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        nav a.active {
+            border-bottom: 2px solid #00467f;
+            padding-bottom: 2px;
+        }
+        /* Horizontal scroll row */
+        .scroll-wrapper {
+            position: relative;
+            margin: 20px 0;
+        }
+        .scroll-container {
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 10px 50px;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+        .scroll-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 70, 127, 0.85);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 20px;
+            transition: background 0.2s;
+        }
+        .scroll-arrow:hover { background: rgba(0, 70, 127, 1); }
+        .scroll-arrow.left  { left: 0; }
+        .scroll-arrow.right { right: 0; }
+
+        /* Vertical rectangle cards */
+        .sub-window {
+            flex: 0 0 260px;
+            width: 260px;
+            border: 1.5px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            background: #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+        }
+        .sub-window h2 {
+            color: #000;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 14px;
+            text-transform: none;
+            font-weight: normal;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            min-height: 2.8em;
+        }
+        .sub-window .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            gap: 10px;
+        }
+        .sub-window img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            border: 1px solid #eee;
+            background: #fafafa;
+            padding: 3px;
+        }
+        .sub-window .text-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .sub-window h3 {
+            color: #00467f;
+            margin-top: 0;
+            font-size: 0.95em;
+            min-height: 3.5em;
+        }
+        .sub-window p {
+            color: #444;
+            font-size: 0.85em;
+            flex: 1;
+            margin-bottom: 10px;
+        }
+        .read-more {
+            display: inline-block;
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-top: auto;
+        }
+        .read-more:hover {
+            text-decoration: underline;
+            color: #003d82;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:5px;">
+            <a href="https://www.technion.ac.il/en/" target="_blank" rel="noopener"><img src="Images/Eng_Hor_Blue.png" alt="Technion Logo" style="height:70px; width:auto;"></a>
+            <h1 style="margin:0; color:#00467f; text-align:center; flex:1; padding:0 20px; white-space:nowrap;">Mechanical Engineering Micro Systems</h1>
+            <img src="Images/MEMS_logo.png" alt="MEMS Lab Logo" style="height:60px; width:auto;">
+        </div>
+        <p class="intro-text">Our research activity focuses on modeling micro actuators and on design of innovative devices with tailored properties. Recently we expanded our interests into Nonlinear Dynamics. Here are some typical fruits of our work. Additional interesting research projects are posted on our Research page. We are eagerly seeking collaboration and if you have interesting problems or challenges, we would love to hear about them.</p>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="research.html">Research</a>
+            <a href="people.html">People</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="content">
+        <div class="scroll-wrapper">
+            <button class="scroll-arrow left"  onclick="document.getElementById('sc').scrollBy({left:-300,behavior:'smooth'})">&#10094;</button>
+            <button class="scroll-arrow right" onclick="document.getElementById('sc').scrollBy({left:300,behavior:'smooth'})">&#10095;</button>
+            <div class="scroll-container" id="sc">
+
+        <!-- Paper 1 (newest) -->
+        <div class="sub-window">
+            <h2><em>Nonlinear Dynamics</em>, 2026</h2>
+            <div class="content-wrapper">
+                <img src="Images/Anisotropic pendulum.png" alt="Anisotropic pendulum image">
+                <div class="text-content">
+                    <h3>The intermediate frequency effect and Dzhanibekov-like transitions in the response of the anisotropic pendulum</h3>
+                    <p>In this work the free vibration response of the anisotropic pendulum is analyzed. The spherical pendulum has three primary periodic motions of free vibration, but two are degenerate and have the same frequency, leading to Dzhanibekov-like transitions.</p>
+                    <span class="read-more">More information in the research tab</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paper 3 -->
+        <div class="sub-window">
+            <h2><em>Journal of Sound and Vibration</em>, 2025</h2>
+            <div class="content-wrapper">
+                <img src="Images/Rotating_anisotropic_rings.gif" alt="Flexural vibrations image">
+                <div class="text-content">
+                    <h3>Flexural vibrations of anisotropic thin rotating rings</h3>
+                    <p>We present a rigorous analysis of the in-plane flexural vibrations of a thin rotating circular ring. The ring is made from an anisotropic material with cubic symmetry, as is common in single-crystalline silicon ring gyroscopes.</p>
+                    <span class="read-more">More information in the research tab</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paper 4 -->
+        <div class="sub-window">
+            <h2><em>IEEE Sensors Letters</em>, 2023</h2>
+            <div class="content-wrapper">
+                <img src="Images/Resonanca.PNG" alt="Resonance of a Linear Mechanical Resonator image">
+                <div class="text-content">
+                    <h3>What is the Resonance of a Linear Mechanical Resonator, Peak Amplitude of Displacement or Peak Amplitude of Velocity?</h3>
+                    <p>There is some ambiguity in literature with respect to the resonance response of mechanical resonators. Should resonance be associated with the peak amplitude of velocity or should it be associated with the peak amplitude of displacement? Another ambiguity relates to the definition of phase: should phase relate velocity or displacement to the driving force? These two issues are addressed here, and it is shown why resonance should be associated with peak amplitude of velocity, and not with peak amplitude of displacement.</p>
+                    <span class="read-more">More information in the research tab</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paper 6 -->
+        <div class="sub-window">
+            <h2><em>IEEE Journal of Microelectromechanical Systems</em>, 2021</h2>
+            <div class="content-wrapper">
+                <img src="Images/Float.png" alt="Parametric Resonators With a Floating Rotor image">
+                <div class="text-content">
+                    <h3>Parametric Resonators With a Floating Rotor: Sensing Strategy for Devices With an Increased Stiffness and Compact Design</h3>
+                    <p>Recently we presented a parametric resonator which is constructed from a double-sided comb-drive transducer with an electrostatically ﬂoating rotor. That device had a natural frequency of ~2.3 kHz. In the present study we present a parametric resonator utilizing a sensing strategy suited for devices with an increased stiffness and compact design.</p>
+                    <span class="read-more">More information in the research tab</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paper 7 -->
+        <div class="sub-window">
+            <h2><em>IEEE MEMS-2017</em> Conference, 2017</h2>
+            <div class="content-wrapper">
+                <img src="Images/Twisting beam.png" alt="A Piezoelectric Twisting Beam">
+                <div class="text-content">
+                    <h3>A Piezoelectric Twisting Beam</h3>
+                    <p>We demonstrated, for the first time ever, a piezoelectric beam actuator that responds in pure twist. The actuator is constructed from bulk PZT (following the work of Don DeVoe), and interdigitated electrodes that are rotated at 45º relative to the beam axis, are used for both poling and driving.</p>
+                    <span class="read-more">More information in the research tab</span>
+                </div>
+            </div>
+        </div>
+
+
+            </div><!-- end scroll-container -->
+        </div><!-- end scroll-wrapper -->
+    </div>
+
+</body>
+</html>
