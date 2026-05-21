@@ -1,0 +1,449 @@
+/*
+Theme Name: MEMS Lab
+Theme URI: https://mems.technion.ac.il/
+Description: Custom theme for the Mechanical Engineering Micro Systems Laboratory, Technion.
+Author: Mechanical Engineering Micro Systems Lab
+Version: 1.0
+*/
+
+/* ── Common ── */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fcfcfc;
+}
+header {
+    margin-bottom: 40px;
+    border-bottom: 2px solid #00467f;
+    padding-bottom: 10px;
+}
+header h1 {
+    color: #00467f;
+    margin-bottom: 5px;
+}
+.intro-text {
+    font-size: 1.1em;
+    color: #444;
+}
+nav {
+    margin-top: 10px;
+    font-size: 0.95em;
+}
+nav a {
+    color: #00467f;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+nav a.active {
+    border-bottom: 2px solid #00467f;
+    padding-bottom: 2px;
+}
+
+/* ── Home: horizontal scroll row ── */
+.scroll-wrapper {
+    position: relative;
+    margin: 20px 0;
+}
+.scroll-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 10px 50px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+.scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 70, 127, 0.85);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 20px;
+    transition: background 0.2s;
+}
+.scroll-arrow:hover { background: rgba(0, 70, 127, 1); }
+.scroll-arrow.left  { left: 0; }
+.scroll-arrow.right { right: 0; }
+
+/* ── Home: cards ── */
+.sub-window {
+    flex: 0 0 260px;
+    width: 260px;
+    border: 1.5px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+}
+.sub-window h2 {
+    color: #000;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+    text-transform: none;
+    font-weight: normal;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    min-height: 2.8em;
+}
+.sub-window .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+}
+.sub-window img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    border: 1px solid #eee;
+    background: #fafafa;
+    padding: 3px;
+}
+.sub-window .text-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.sub-window h3 {
+    color: #00467f;
+    margin-top: 0;
+    font-size: 0.95em;
+    min-height: 3.5em;
+}
+.sub-window p {
+    color: #444;
+    font-size: 0.85em;
+    flex: 1;
+    margin-bottom: 10px;
+}
+.read-more {
+    display: inline-block;
+    color: #0056b3;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-top: auto;
+}
+.read-more:hover {
+    text-decoration: underline;
+    color: #003d82;
+}
+
+/* ── Research page ── */
+.research-entry {
+    border: 1.5px solid #ddd;
+    border-radius: 4px;
+    padding: 25px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+.research-entry h2 {
+    color: #00467f;
+    font-size: 1.1em;
+    margin: 0 0 10px 0;
+}
+.research-entry hr {
+    display: none;
+}
+.research-media {
+    float: left;
+    margin: 0 22px 12px 0;
+}
+.research-media video,
+.research-media img {
+    width: 300px;
+    height: 225px;
+    object-fit: contain;
+    border: 1px solid #eee;
+    background: #fafafa;
+    display: block;
+}
+p.abstract {
+    color: #444;
+    font-size: 0.92em;
+    margin: 0 0 14px 0;
+}
+.citation {
+    font-size: 0.85em;
+    color: #555;
+    padding-top: 12px;
+    clear: both;
+}
+.citation a {
+    color: #0056b3;
+    text-decoration: none;
+}
+.citation a:hover {
+    text-decoration: underline;
+}
+
+/* ── People page ── */
+section {
+    margin-bottom: 50px;
+}
+section h2 {
+    color: #00467f;
+    font-size: 1.25em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+}
+.pi-card {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    background: #fff;
+    border: 1.5px solid #ddd;
+    border-radius: 4px;
+    padding: 25px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+}
+.pi-photo img {
+    width: 130px;
+    border-radius: 3px;
+    display: block;
+}
+.pi-info h3 {
+    color: #00467f;
+    margin: 0 0 6px 0;
+    font-size: 1.15em;
+}
+.pi-contact {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 12px;
+}
+.pi-contact a {
+    color: #00467f;
+}
+.pi-bio {
+    font-size: 0.95em;
+    margin: 0;
+}
+.students-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.student-card {
+    flex: 0 0 calc(50% - 8px);
+    background: #fff;
+    border: 1.5px solid #ddd;
+    border-radius: 4px;
+    padding: 15px 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    box-sizing: border-box;
+}
+.student-card .degree-label {
+    font-size: 0.78em;
+    font-weight: bold;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 3px;
+}
+.student-card h3 {
+    color: #00467f;
+    margin: 0 0 6px 0;
+    font-size: 1.05em;
+}
+.student-card .contact {
+    font-size: 0.88em;
+    color: #555;
+}
+.student-card .contact a {
+    color: #00467f;
+}
+.table-controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+.table-controls label {
+    margin-right: 5px;
+    color: #555;
+}
+.table-controls input[type="search"] {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 0.9em;
+    width: 220px;
+}
+table.alumni-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88em;
+}
+table.alumni-table th,
+table.alumni-table td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+}
+table.alumni-table td:nth-child(3),
+table.alumni-table th:nth-child(3) {
+    white-space: nowrap;
+}
+table.alumni-table td:nth-child(1),
+table.alumni-table th:nth-child(1) {
+    min-width: 175px;
+}
+table.alumni-table td:nth-child(2),
+table.alumni-table th:nth-child(2) {
+    max-width: 160px;
+}
+table.alumni-table tr.has-continuation td {
+    border-bottom: none;
+    padding-bottom: 2px;
+}
+table.alumni-table tr.continuation td {
+    border-top: none;
+    padding-top: 0;
+}
+table.alumni-table th {
+    background: #f0f4f8;
+    color: #00467f;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+table.alumni-table th:hover {
+    background: #e0e8f0;
+}
+table.alumni-table th .sort-icon {
+    margin-left: 4px;
+    font-size: 0.75em;
+    color: #aaa;
+}
+table.alumni-table tbody tr:hover td {
+    background: #f8fafc;
+}
+table.alumni-table td a {
+    color: #00467f;
+}
+.table-info {
+    font-size: 0.82em;
+    color: #777;
+    margin-top: 8px;
+}
+
+/* ── Contact page ── */
+.contact-info {
+    background: #fff;
+    border: 1.5px solid #ddd;
+    border-radius: 4px;
+    padding: 25px 30px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    margin-bottom: 35px;
+}
+.contact-info h2 {
+    color: #00467f;
+    font-size: 1.1em;
+    margin: 0 0 12px 0;
+}
+.contact-info p {
+    margin: 3px 0;
+    font-size: 0.97em;
+}
+.contact-info a {
+    color: #00467f;
+}
+.contact-form {
+    background: #fff;
+    border: 1.5px solid #ddd;
+    border-radius: 4px;
+    padding: 25px 30px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+}
+.contact-form h2 {
+    color: #00467f;
+    font-size: 1.1em;
+    margin: 0 0 20px 0;
+}
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 16px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.form-group label {
+    font-size: 0.88em;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 4px;
+}
+.form-group input,
+.form-group textarea {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 0.92em;
+    font-family: inherit;
+    color: #333;
+    background: #fafafa;
+    transition: border-color 0.2s;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #00467f;
+    background: #fff;
+}
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+.required-note {
+    font-size: 0.8em;
+    color: #888;
+    margin-bottom: 16px;
+}
+.submit-btn {
+    background: #00467f;
+    color: #fff;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 3px;
+    font-size: 0.95em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.submit-btn:hover {
+    background: #003565;
+}

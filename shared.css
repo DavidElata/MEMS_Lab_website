@@ -1,0 +1,39 @@
+/* Shared styles for navigation and mobile menu */
+.nav-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border: 1px solid #00467f;
+    background: #fff;
+    color: #00467f;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav-toggle:focus {
+    outline: 2px solid #00467f;
+    outline-offset: 2px;
+}
+
+.site-nav {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: inline-flex;
+    }
+    .site-nav {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .site-nav.is-open {
+        display: flex;
+    }
+}

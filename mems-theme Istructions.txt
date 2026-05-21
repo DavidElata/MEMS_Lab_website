@@ -1,0 +1,7 @@
+Ready to send: mems-theme.zip is in your 2026_Website folder.
+
+Instructions for IT:
+
+1 Upload and activate mems-theme.zip via WordPress → Appearance → Themes
+2 Copy your Images/ folder into the theme directory on the server
+4 Create 4 pages with slugs: home (set as front page), research, people, contact
